@@ -36,5 +36,6 @@ return {
 		keys = {
 			{ "<Leader>E", function() require("mini.files").open() end, desc = "Abrir explorador de arquivos"}
 		}
-	}
+	},
+	{'nvim-mini/mini.surround', version = false, opts={}}
 }

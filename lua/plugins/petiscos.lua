@@ -2,7 +2,7 @@ return{
 	'folke/snacks.nvim', 
 	opts = {
 		dashboard = {
-			enabled = true,
+			enabled = false,
 			width = 70,
 			row = nil,
 			col = nil,
