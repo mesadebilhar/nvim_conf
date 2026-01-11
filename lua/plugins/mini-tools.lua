@@ -24,18 +24,13 @@ return {
 				trim_left = '<',
 				trim_right = '>',
 				synchronize = '=',
-				show_help = 'g?',
-			},
-			windows = {
-				preview = false,
-			},
-			options = {
-				use_as_default_explorer = false
-			},
+				show_help = 'g?', },
+			windows = { preview = false, },
+			options = { use_as_default_explorer = false },
 		},
 		keys = {
 			{ "<Leader>E", function() require("mini.files").open() end, desc = "Abrir explorador de arquivos"}
 		}
 	},
-	{'nvim-mini/mini.surround', version = false, opts={}}
+	{'nvim-mini/mini.surround', version = false, opts={}},
 }
