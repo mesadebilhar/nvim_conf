@@ -3,6 +3,7 @@ return{
 	opts = {keys  = 'etovxqpdygfblzhckisuran'},
 	keys = {
 		-- A maior mão na roda do mundo.
-		{"<leader>h", ':HopWord<CR>' },
+		{"<leader>h", ':HopWord<CR>', desc = "Pular para palavra"},
+		{"<leader><leader>f", ':HopChar1<CR>', desc = "Pular para caractere"}
 	}
 }

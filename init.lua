@@ -17,6 +17,7 @@ keymap('n', '<Leader>p', ':Lazy<cr>', { desc = 'Gerenciador de plugins'})
 keymap("n", "<leader>r", ':set relativenumber!<CR>', {desc= 'Ativa linhas relativas'})
 keymap("n", '<leader>w', ':write<cr>', {desc = 'Salvar'})
 keymap("n", '<leader>q', ':xa<cr>', {desc = 'Fecha todos os buffers e salva'})
+keymap("n", '<leader>ss', ':%s/', {desc = "Substituir"})
 -- Troca para o diretório atual, usar com cuidado para não ficar preso em pasta kk
 -- É útil para o fuzzy pegar o diretório da pasta 
 keymap("n", "<leader>cd",function()
@@ -29,3 +30,4 @@ keymap("n", "<leader>cd",function()
 -- Navegação de janelas mais dinâmico.
 -- "Esc" também é interpretado como a tecla "meta"
 keymap("n", "<Esc>", "<C-W>")
+vim.cmd("colorscheme carne")

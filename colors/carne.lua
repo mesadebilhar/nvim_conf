@@ -1,1 +1,3 @@
-require("carnuxo").setup({paleta = "patinho"})
+vim.o.background = 'dark'
+require("carnuxo").setup({})
+

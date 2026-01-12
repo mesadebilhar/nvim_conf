@@ -1,15 +1,11 @@
 local M = {}
-
-
+local groups = require("carnuxo.carne")
 M.setup = function(opts)
-	opts = opts or {}
-	local paleta = opts.paleta or "patinho"
-	local groups = require("carnuxo/carne").color(paleta)
-	
-	local setColor = vim.api.nvim_set_hl
-	for group, setting in pairs(groups) do
-		setColor(0, group, setting)
-	end
+	local opts =  {}
+	local escolha = paleta or "carne"
+	for group, set in pairs(groups.colorGroup(escolha)) do
+	vim.api.nvim_set_hl(0,group,set)
+end
 end
 
 return M
