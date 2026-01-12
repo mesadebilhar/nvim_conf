@@ -7,6 +7,8 @@ vim.g.netrw_bufsettings = 'nu nowrap'
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
 vim.o.background = "dark"
+
+
 -- Keymaps
 vim.g.mapleader = " "
 local keymap = vim.keymap.set
@@ -30,4 +32,21 @@ keymap("n", "<leader>cd",function()
 -- Navegação de janelas mais dinâmico.
 -- "Esc" também é interpretado como a tecla "meta"
 keymap("n", "<Esc>", "<C-W>")
-vim.cmd("colorscheme carne")
+vim.cmd("colorscheme retrobox")
+
+
+-- Lsp 
+vim.lsp.config['lua_ls'] = {
+	cmd ={'lua-langue-server'},
+	filetypes = {'lua'},
+	root_markers= {{'.luarc.json', '.luarc.jsonc'}, '.git'},
+	settings ={
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+			}
+		}
+	}
+}
+
+vim.lsp.enable('lua_ls')
