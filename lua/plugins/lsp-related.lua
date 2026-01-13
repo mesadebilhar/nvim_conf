@@ -4,9 +4,10 @@ return{
 		{"<leader>m", ":Mason<CR>", desc="Abre o mason"}
 	}
 },
-	{'hrsh7th/cmp-nvim-lsp'},
+	{'mason-org/mason-lspconfig.nvim', opts = {}},
+	{'hrsh7th/cmp-nvim-lsp', },
 	{'hrsh7th/cmp-buffer'},
 	{'hrsh7th/cmp-path'},
 	{'hrsh7th/cmp-cmdline'},
-	{'hrsh7th/nvim-cmp'},
+	{'hrsh7th/nvim-cmp', opts={}},
 }

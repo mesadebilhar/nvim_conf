@@ -8,7 +8,6 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
 vim.o.background = "dark"
 
-
 -- Keymaps
 vim.g.mapleader = " "
 local keymap = vim.keymap.set
@@ -25,28 +24,33 @@ keymap("n", '<leader>ss', ':%s/', {desc = "Substituir"})
 keymap("n", "<leader>cd",function()
 	cwd = vim.cmd('cd %:p:h')
 	print("Mudou para o diretório: " .. vim.fn.expand("%:p:h"))
-	end
-	,
-	{desc='Muda para o diretório atual'})	
+end
+,
+{desc='Muda para o diretório atual'})
 
 -- Navegação de janelas mais dinâmico.
 -- "Esc" também é interpretado como a tecla "meta"
 keymap("n", "<Esc>", "<C-W>")
 vim.cmd("colorscheme retrobox")
 
-
 -- Lsp 
-vim.lsp.config['lua_ls'] = {
-	cmd ={'lua-langue-server'},
-	filetypes = {'lua'},
-	root_markers= {{'.luarc.json', '.luarc.jsonc'}, '.git'},
-	settings ={
-		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-			}
-		}
-	}
+local cmp = require('cmp')
+cmp.setup({ mapping = {
+	['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+	['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+	['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+	['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+	['<C-d>'] = cmp.mapping.scroll_docs(-4),
+	['<C-f>'] = cmp.mapping.scroll_docs(4),
+	['<C-Space>'] = cmp.mapping.complete(),
+	['<C-e>'] = cmp.mapping.close(),
+	['<CR>'] = cmp.mapping.confirm({
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = true,
+	}),
+},
+sources = {
+	{ name = 'nvim_lsp'}
 }
+})
 
-vim.lsp.enable('lua_ls')
