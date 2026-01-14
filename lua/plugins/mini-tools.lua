@@ -5,7 +5,8 @@ return {
 			['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].'},
 			['>'] = { action = 'close', pair = '<>', neigh_pattern = '[^\\].'},
 		},
-	}
+	},
+	event = {"BufNewFile", "BufReadPost"}
 },
 -- O plugin é legal, mas senti falta de uma option para mostrar o indíce de cada item num diretório
 	{'nvim-mini/mini.files', version = false, enabled = false, 
@@ -32,5 +33,5 @@ return {
 			{ "<Leader>E", function() require("mini.files").open() end, desc = "Abrir explorador de arquivos"}
 		}
 	},
-	{'nvim-mini/mini.surround', version = false, opts={}},
+	{'nvim-mini/mini.surround', version = false, opts={}, event = {"BufNewFile", "BufReadPost"}},
 }

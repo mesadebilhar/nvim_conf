@@ -1,6 +1,6 @@
 -- Configurações gerais
+vim.cmd("syntax enable")
 require("lazy/lazy")
-
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
@@ -38,40 +38,6 @@ keymap("n", "<leader>cd", function()
 -- Navegação de janelas mais dinâmico.
 -- "Esc" também é interpretado como a tecla "meta"
 keymap("n", "<Esc>", "<C-W>")
-
-local borda = {
-	{ '❀' }, --Borda superior esquerda
-	{ '─' },
-	{ '✶' }, --Borda superior direita
-	{ '│' },
-	{ '❀' }, --Borda inferior direita
-	{ '─' },
-	{ '☻' }, --Borda Inferior esquerda
-	{ '│' },
-}
--- Lsp
-local cmp = require('cmp')
-cmp.setup({
-	window = {
-		completion = cmp.config.window.bordered({ border = borda }),
-		documentation = cmp.config.window.bordered({ border = borda })
-	},
-	mapping = {
-		['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-		['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-		['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.close(),
-		['<CR>'] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
-	},
-	sources = {
-		{ name = 'nvim_lsp' }
-	}
-})
+-- Descobri sem querer como que apagava para trás lol
+keymap("i", "<C-Backspace>", "<C-W>")
 

@@ -22,4 +22,5 @@ return {
 	-- particle_gravity = -100,
 	-- min_distance_emit_particles = 0,
   },
+  event = {"BufNewFile", "BufReadPost"}
 }
