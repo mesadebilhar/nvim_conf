@@ -41,5 +41,7 @@ keymap("n", "<leader>cd", function()
 keymap("n", "<Esc>", "<C-W>")
 -- Descobri sem querer como que apagava para trás lol
 keymap("i", "<C-Backspace>", "<C-W>")
-
-
+-- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},{
+-- 	pattern = {".git","README.md","package.json", "MAKEFILE"},
+--
+-- })

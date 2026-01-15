@@ -55,9 +55,8 @@ return {
 
 				},
 
+				},
 			},
-		},
-
 		picker = {
 			enabled = true
 		},
@@ -79,3 +78,4 @@ return {
 		{ "<leader>fh", function() Snacks.picker.help() end,                                    desc = "Páginas de ajuda" }
 	},
 }
+
