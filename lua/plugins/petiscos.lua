@@ -33,7 +33,7 @@ return {
 			sections = {
 				{
 					section = "terminal",
-					cmd = 'chafa -c full --stretch --align center,center --size 32x32 ' .. mascotePath,
+					cmd = 'chafa -c full --stretch -f symbols --align center,center --size 32x32 ' .. mascotePath,
 					height = 32,
 					padding = 1,
 					gap = 1,

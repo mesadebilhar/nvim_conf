@@ -1,14 +1,20 @@
 return {
-	{ 'neovim/nvim-lspconfig',          lazy = false },
-	{
-		'mason-org/mason.nvim',
-		opts = {},
-		keys = {
-			{ "<leader>m", ":Mason<CR>", desc = "Abre o mason" }
+	{"williamboman/mason-lspconfig.nvim", opts = {
+		ensure_installed = {
+			"clangd",
+			"ts_ls",
+			"lua_ls",
+			"html",
+			"cssls"
 		}
 	},
-	{ 'mason-org/mason-lspconfig.nvim', opts = {},      event = { "BufReadPost", "BufNewFile" } },
-	{ 'hrsh7th/cmp-nvim-lsp',           enabled = true, event = { "BufReadPost", "BufNewFile" } },
+	dependencies = {
+		{ "williamboman/mason.nvim", opts = {}},
+		{"neovim/nvim-lspconfig"}
+	},
+	event = {"InsertEnter"},
+},
+	{ 'hrsh7th/cmp-nvim-lsp',           enabled = true, event = {"InsertEnter"} },
 	{
 		'hrsh7th/nvim-cmp',
 		opts = {},
@@ -72,4 +78,5 @@ return {
 			fuzzy = { implementation = "lua" }
 		}
 	},
+
 }
