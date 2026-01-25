@@ -14,7 +14,7 @@ return {
 	},
 	event = {"InsertEnter"},
 },
-	{ 'hrsh7th/cmp-nvim-lsp',           enabled = true, event = {"InsertEnter"} },
+	{ 'hrsh7th/cmp-nvim-lsp', enabled = true, event = {"InsertEnter"} },
 	{
 		'hrsh7th/nvim-cmp',
 		opts = {},

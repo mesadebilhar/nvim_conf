@@ -1,6 +1,7 @@
 -- Configurações gerais
 vim.cmd("syntax enable")
 require("lazy/lazy")
+local rooter = require("rooter")
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
@@ -12,6 +13,8 @@ vim.o.winborder = 'rounded'
 vim.o.pumborder = 'rounded'
 vim.cmd("colorscheme retrobox")
 vim.opt.termguicolors = true
+vim.o.shiftwidth = 3
+vim.o.tabstop = 3
 
 -- Keymaps
 vim.g.mapleader = " "
@@ -30,8 +33,7 @@ keymap("n", '<Esc>d', vim.diagnostic.open_float, { desc = "Mostrar diagnósticos
 -- Troca para o diretório atual, usar com cuidado para não ficar preso em pasta kk
 -- É útil para o fuzzy pegar o diretório da pasta
 keymap("n", "<leader>cd", function()
-		cwd = vim.cmd('cd %:p:h')
-		print("Mudou para o diretório: " .. vim.fn.expand("%:p:h"))
+		rooter.check()
 	end
 	,
 	{ desc = 'Muda para o diretório atual' })
@@ -41,30 +43,3 @@ keymap("n", "<leader>cd", function()
 keymap("n", "<Esc>", "<C-W>")
 -- Descobri sem querer como que apagava para trás lol
 keymap("i", "<C-Backspace>", "<C-W>")
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},{
--- 	pattern = {".git","README.md","package.json", "MAKEFILE"},
---
--- })
-
-keymap({ "x", "o" }, "af",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects") end,
-	{ desc = "Ao redor da função" })
-keymap({ "x", "o" }, "if",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects") end,
-	{ desc = "Dentro da função" })
-keymap({ "x", "o" }, "ac",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects") end,
-	{ desc = "Ao redor da classe" })
-keymap({ "x", "o" }, "ic",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects") end,
-	{ desc = "Dentro da classe" })
-keymap({ "x", "o" }, "al",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@loop.outer", "textobjects") end,
-	{ desc = "Fora do loop" })
-keymap({ "x", "o" }, "il",
-	function() require "nvim-treesitter-textobjects.select".select_textobject("@loop.inner", "textobjects") end,
-	{ desc = "Dentro do loop" })
-
-keymap({ "n","x", "o" }, "]f", function()
-	  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-end, {desc = "Vai para o inicio da próxima func"})

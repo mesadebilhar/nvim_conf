@@ -1,37 +1,27 @@
 return {
 	{'nvim-mini/mini.pairs', version = false, 
 	opts = {
-		mappings = {
-			['<'] = { action = 'open', pair = '<>', neigh_pattern = '[^\\].'},
-			['>'] = { action = 'close', pair = '<>', neigh_pattern = '[^\\].'},
-		},
 	},
-	event = {"BufNewFile", "BufReadPost"}
+	event = {"InsertEnter"},
+	enabled = false
 },
--- O plugin é legal, mas senti falta de uma option para mostrar o indíce de cada item num diretório
-	{'nvim-mini/mini.files', version = false, enabled = false, 
-		opts = { 
-			mappings = {
-				open = '<Leader>E',
-				close = 'q',
-				go_in = '<CR>',
-				go_in_plus = 'L',
-				go_out = '-',
-				go_out_plus = 'H',
-				mark_set = 'm',
-				mark_go = "'",
-				reset = '<BS>',
-				reveal_cwd = '@',
-				trim_left = '<',
-				trim_right = '>',
-				synchronize = '=',
-				show_help = 'g?', },
-			windows = { preview = false, },
-			options = { use_as_default_explorer = false },
-		},
-		keys = {
-			{ "<Leader>E", function() require("mini.files").open() end, desc = "Abrir explorador de arquivos"}
-		}
-	},
 	{'nvim-mini/mini.surround', version = false, opts={}, event = {"BufNewFile", "BufReadPost"}},
+	{'nvim-mini/mini.move', version = false, opts={
+		mappings = {
+			-- Visual mode
+			left = '<M-C-h>',
+			right = '<M-C-l>',
+			down = '<M-C-j>',
+			up = '<M-C-k>',
+			-- Modo normal
+			line_left = '<M-C-h>',
+			line_right = '<M-C-l>',
+			line_down = '<M-C-j>',
+			line_up = '<M-C-k>',
+
+		},
+		options = {
+			reindent_linewise = true,
+		}
+	}, event = {"BufNewFile", "BufReadPost"}},
 }
